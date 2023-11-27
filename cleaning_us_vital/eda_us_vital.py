@@ -4,7 +4,7 @@ import numpy as np
 
 # %%
 # read in the csv
-overdoses = pd.read_csv("merged_data.csv")
+overdoses = pd.read_csv("cleaning_us_vital\merged_data.csv")
 overdoses.head(10)
 
 # %%
@@ -15,7 +15,7 @@ overdoses["County"].head(10)
 
 # %%
 # Here we subset by the policy states. We will need to add the control states.
-selected_states = ["FL", "TX", "WA", "WV", "TN", "OH"]
+selected_states = ["FL", "TX", "WA", "WV", "TN", "OH", "NE", "WY", "KS", "OR", "IL"]
 
 filtered_df = overdoses[overdoses["County"].notna()]
 filtered_df = filtered_df[filtered_df["County"].str.endswith(tuple(selected_states))]
