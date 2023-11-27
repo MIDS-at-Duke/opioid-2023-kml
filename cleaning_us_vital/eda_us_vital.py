@@ -67,7 +67,9 @@ drug_causes_df = filtered_df[filtered_df["Drug/Alcohol Induced Cause"] == "Drug 
 
 # Group by 'County' and 'Year', then sum the 'Deaths'
 result_df = (
-    drug_causes_df.groupby(["County", "Year"]).agg({"Deaths": "sum"}).reset_index()
+    drug_causes_df.groupby(["County", "Year", "County Code"])
+    .agg({"Deaths": "sum"})
+    .reset_index()
 )
 result_df[result_df["County"] == "Broward County, FL"]
 
