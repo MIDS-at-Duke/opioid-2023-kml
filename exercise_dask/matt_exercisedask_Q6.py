@@ -20,6 +20,7 @@ from dask.distributed import Client
 import dask.dataframe as dd
 import pyarrow as pa
 import pyarrow.parquet as pq
+import os
 
 # %%
 # Print the number of cores available
@@ -30,7 +31,7 @@ client = Client()
 client
 
 # %%
-# Reload the data
+# Load data
 df = dd.read_csv(
     "arcos_all_washpost.tsv",
     delimiter='\t',
@@ -82,7 +83,7 @@ df["year"] = df.date.dt.year
 df["MME_Conversion_Factor"] = dd.to_numeric(
     df["MME_Conversion_Factor"], errors="coerce"
 )
-# Make an estimate of total morphine equivalent shipments
+# Estimate morphine equivalent for each shipment
 df["morphine_equivalent_g"] = (df["CALC_BASE_WT_IN_GM"]) * df["MME_Conversion_Factor"]
 
 # Drop extra variables
@@ -95,7 +96,7 @@ reduced_df = reduced_df[reduced_df['BUYER_STATE'].isin(state_list)]
 reduced_df = reduced_df[(reduced_df['year']>=2003)&
                         (reduced_df['year']<=2015)]
 
-# Collapse to total shipments by each distributer.
+# Collapse to total shipments for each county
 transactions_grouped = reduced_df.groupby(
     ["year", "BUYER_STATE", "BUYER_COUNTY"]
 ).morphine_equivalent_g.sum()
