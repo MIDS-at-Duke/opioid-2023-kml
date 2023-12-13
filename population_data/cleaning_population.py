@@ -27,12 +27,14 @@ column_names = [
     "Origin",
     "Sex",
     "Age",
-    "Population",
+    "Population" "County",
 ]
 
 # Read the fixed-length data file with column names
 data = pd.read_fwf(
-    "us.1969_2020.19ages.adjusted.txt", widths=column_widths, names=column_names
+    "population_death/us.1969_2020.19ages.adjusted.txt",
+    widths=column_widths,
+    names=column_names,
 )
 
 # Display the data
