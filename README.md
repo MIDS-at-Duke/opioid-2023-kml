@@ -1,4 +1,4 @@
-# Opioid Policy Implementation 
+# Opioid Policy Impact
 ## Authors: Matthew Holden, Katie Hucker, Lisa Wang
 
 #### Executive Summary
@@ -9,4 +9,4 @@ The study's primary objectives are to assess the impact of these policy changes 
 
 ----
 
-Continue Reading: `03_Reports\OpioidPolicyImpact.pdf`
+Continue Reading: [Opioid Policy Impact Report](https://github.com/MIDS-at-Duke/opioid-2023-kml/blob/main/30_Reports/OpioidPolicyImpact.pdf)
